@@ -1,0 +1,32 @@
+{
+  "name": "oss-cdx-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/sbom/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMoo-Miki/oss-cdx-demo.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/AMoo-Miki/oss-cdx-demo/issues"
+  },
+  "homepage": "https://github.com/AMoo-Miki/oss-cdx-demo#readme",
+  "dependencies": {
+    "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#6a2368a1a57a4f0d0bf46a36bae5b785b1cbe728",
+    "@opensearch-project/opensearch": "^1.1.0",
+    "async": "^3.2.3",
+    "fs-extra": "^10.0.1",
+    "js-yaml": "^4.1.0",
+    "json5": "^2.2.1",
+    "semver": "github:AMoo-Miki/node-semver#7c8973da05c34a31162e749b3bd73ac5c36d6054",
+    "simple-git": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13"
+  }
+}
