@@ -7,9 +7,13 @@ const args = process.argv;
 
 const run = async () => {
     await OpenSearch.initIndices();
-    await SBOM.run();
-    if (!args.includes('--sbom-only')) {
+    if (args.includes('--sbom')) {
+        await SBOM.run();
+    }
+    if (args.includes('--advs')) {
         await Advisories.run();
+    }
+    if (args.includes('--vuls')) {
         await Vulnerabilities.run();
     }
 };
