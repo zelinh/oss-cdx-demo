@@ -2,6 +2,7 @@ const SBOM = require('./lib/sbom');
 const Advisories = require('./lib/advisories');
 const Vulnerabilities = require('./lib/vulnerabilities');
 const OpenSearch = require("./lib/opensearch");
+const normalizer = require("./lib/normalizer");
 
 const args = process.argv;
 
