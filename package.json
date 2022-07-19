@@ -23,6 +23,7 @@
     "fs-extra": "^10.0.1",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.1",
+    "nodemailer": "^6.7.7",
     "semver": "github:AMoo-Miki/node-semver#7c8973da05c34a31162e749b3bd73ac5c36d6054",
     "simple-git": "^3.5.0"
   },
