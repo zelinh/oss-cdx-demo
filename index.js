@@ -2,7 +2,7 @@ const SBOM = require('./lib/sbom');
 const Advisories = require('./lib/advisories');
 const Vulnerabilities = require('./lib/vulnerabilities');
 const OpenSearch = require("./lib/opensearch");
-const normalizer = require("./lib/normalizer");
+const Summary = require("./lib/summary");
 
 const args = process.argv;
 
@@ -18,7 +18,7 @@ const run = async () => {
         await Vulnerabilities.run();
     }
     if (args.includes('--email')) {
-        await Summary.run();
+        await Summary.email();
     }
 };
 
