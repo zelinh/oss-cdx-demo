@@ -208,6 +208,12 @@
   {
     "name": "Rust: OpenSearch Client",
     "repo": "https://github.com/opensearch-project/opensearch-rs.git",
+    "install": [
+      "cargo package -q"
+    ],
+    "roots": [
+      "target/package"
+    ],
     "disabled": false
   },
   {
