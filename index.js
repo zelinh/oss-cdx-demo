@@ -17,7 +17,7 @@ const run = async () => {
     if (args.includes('--vuls')) {
         await Vulnerabilities.run();
     }
-    if (args.includes('--email')) {
+    if (args.includes('--email') || args.includes('--summ')) {
         await Summary.email();
     }
 };
