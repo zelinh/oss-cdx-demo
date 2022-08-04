@@ -556,7 +556,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Alerting: Open Distro Kibana Plugin",
@@ -585,7 +585,7 @@
       "v1.12.0.1",
       "v1.12.0.2"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Notebooks: Open Distro Plugin",
@@ -598,7 +598,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Visualizations: Open Distro Kibana Plugin",
@@ -606,7 +606,7 @@
     "ignored-tags": [
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Index Management: Open Distro Kibana Plugin",
@@ -627,7 +627,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Anomaly Detection: Open Distro Kibana Plugin",
@@ -641,7 +641,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Trace Analytics: Open Distro Kibana Plugin",
@@ -649,7 +649,7 @@
     "ignored-tags": [
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Alerting: Open Distro Plugin",
@@ -683,7 +683,7 @@
       "v1.12.0.1",
       "v1.12.0.2"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Notifications: Open Distro Plugin",
@@ -692,7 +692,7 @@
       "notifications",
       "dashboards-kibana-notifications"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "PerfTop: Open Distro Client",
@@ -707,7 +707,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Index Management: Open Distro Plugin",
@@ -732,12 +732,12 @@
       "v1.12.0.0",
       "v1.12.0.1"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "CLI: Open Distro Client",
     "repo": "https://github.com/opendistro-for-elasticsearch/odfe-cli.git",
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Common Utils: Open Distro Plugins",
@@ -752,7 +752,7 @@
       "v1.12.0.1",
       "v1.12.0.2"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Performance Analyzer: Open Distro",
@@ -772,7 +772,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Performance Analyzer RCA: Open Distro",
@@ -782,7 +782,7 @@
       "v1.10.1.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Job Scheduler: Open Distro Plugin",
@@ -805,7 +805,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Reports & Scheduler: Open Distro Kibana Plugin",
@@ -818,7 +818,7 @@
       "chromium-1.12.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Anomaly Detection: Open Distro Plugin",
@@ -833,7 +833,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Cross Cluster Replication: Open Distro Plugin",
@@ -842,7 +842,7 @@
     "ignored-tags": [
       "v1.13.0.0-experimental"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "k-NN: Open Distro Plugin",
@@ -862,7 +862,7 @@
       "v1.11.0.0",
       "v1.12.0.0"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "Security: Open Distro Plugin",
@@ -921,14 +921,14 @@
       "v1.12.0.0",
       "v1.13.1.0-tesingPluginRenaming"
     ],
-    "disabled": false
+    "disabled": true
   },
   {
-    "name": "Asynchronous Search: OpenSearch Plugin",
+    "name": "Asynchronous Search: Distro Plugin",
     "repo": "https://github.com/opendistro-for-elasticsearch/asynchronous-search.git",
     "ignored-tags": [
     ],
-    "disabled": false
+    "disabled": true
   },
   {
     "name": "ElasticSearch",
