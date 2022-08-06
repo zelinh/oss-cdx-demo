@@ -116,6 +116,27 @@
     "disabled": false
   },
   {
+    "name": "Java: OpenSearch Common Utils",
+    "repo": "https://github.com/opensearch-project/common-utils.git",
+    "ignored-tags": [
+      "v1.0",
+      "v1.1",
+      "v1.11.0.0",
+      "v1.11.0.1",
+      "v1.11.1.0",
+      "v1.12.0.0",
+      "v1.12.0.1",
+      "v1.12.0.2",
+      "v1.13.0.0"
+    ],
+    "disabled": false
+  },
+  {
+    "name": "OUI: OpenSearch Design System",
+    "repo": "https://github.com/opensearch-project/oui.git",
+    "disabled": false
+  },
+  {
     "name": "Performance Analyzer RCA",
     "repo": "https://github.com/opensearch-project/performance-analyzer-rca.git",
     "disabled": false
