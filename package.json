@@ -17,15 +17,15 @@
   },
   "homepage": "https://github.com/AMoo-Miki/oss-cdx-demo#readme",
   "dependencies": {
-    "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#93721ef85558c287845b74502f1c89d76279bb9b",
-    "@opensearch-project/opensearch": "^1.1.0",
-    "async": "^3.2.3",
-    "fs-extra": "^10.0.1",
+    "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#cd3256793adee654ef707409e7b37f7d9160f527",
+    "@opensearch-project/opensearch": "^2.0.0",
+    "async": "^3.2.4",
+    "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.1",
-    "nodemailer": "^6.7.7",
+    "nodemailer": "^6.7.8",
     "semver": "github:AMoo-Miki/node-semver#7c8973da05c34a31162e749b3bd73ac5c36d6054",
-    "simple-git": "^3.5.0"
+    "simple-git": "^3.13.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13"

@@ -2,3 +2,4 @@
 /.idea/
 /config/opensearch.*
 /config/email.*
+/config/ci.*
