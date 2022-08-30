@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/AMoo-Miki/oss-cdx-demo#readme",
   "dependencies": {
-    "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#93721ef85558c287845b74502f1c89d76279bb9b",
+    "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#57e81d9bbf39bccf62ce93088c5f66fe9e4a6ea7",
     "@opensearch-project/opensearch": "^1.1.0",
     "async": "^3.2.3",
     "fs-extra": "^10.0.1",
