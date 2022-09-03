@@ -222,8 +222,6 @@ const run = async (specificProject) => {
     }
     console.log('SBOM Done.');
 
-    if (specificProject) return;
-
     console.log('ADVS Started ...');
     const buildIdADVS = await buildADVS();
     if (buildIdADVS) {
@@ -265,7 +263,7 @@ const run = async (specificProject) => {
     console.log('VULS Done.');
 
     const date = new Date();
-    if (date.getDay() === 3) {
+    if (0 && date.getDay() === 3) {
         console.log('SUMM Started ...');
         const buildIdSUMM = await buildSUMM();
         if (buildIdSUMM) {
