@@ -7,7 +7,7 @@ const { sleep } = require("../lib/sleep.js");
 const buildConfig = config.get('ci.codebuild');
 const PARALLEL_COUNT = buildConfig.parallelCount || 20;
 
-const buildSBOM = async project => {
+const triggerSBOMGeneration = async project => {
     if (project.disabled) return;
 
     try {
@@ -37,13 +37,13 @@ const buildSBOM = async project => {
         if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
             console.log('Holding...');
             await sleep(30000);
-            return buildSBOM(project);
+            return triggerSBOMGeneration(project);
         }
         console.error('Exception on', project, 'with', ex);
     }
 };
 
-const buildADVS = async () => {
+const triggerAdvisoriesTask = async () => {
     try {
         const { stdout, stderr } = await exec(`echo '${JSON.stringify({
             projectName: buildConfig.worker,
@@ -66,13 +66,13 @@ const buildADVS = async () => {
         if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
             console.log('Holding...');
             await sleep(30000);
-            return buildADVS();
+            return triggerAdvisoriesTask();
         }
         console.error('Exception on ADVS with', ex);
     }
 };
 
-const buildVULS = async () => {
+const triggerScan = async () => {
     try {
         const { stdout, stderr } = await exec(`echo '${JSON.stringify({
             projectName: buildConfig.worker,
@@ -95,13 +95,13 @@ const buildVULS = async () => {
         if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
             console.log('Holding...');
             await sleep(30000);
-            return buildADVS();
+            return triggerAdvisoriesTask();
         }
         console.error('Exception on VULS with', ex);
     }
 };
 
-const buildSUMM = async () => {
+const triggerWeeklySummary = async () => {
     try {
         const { stdout, stderr } = await exec(`echo '${JSON.stringify({
             projectName: buildConfig.worker,
@@ -124,7 +124,7 @@ const buildSUMM = async () => {
         if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
             console.log('Holding...');
             await sleep(30000);
-            return buildADVS();
+            return triggerAdvisoriesTask();
         }
         console.error('Exception on SUMM with', ex);
     }
@@ -139,7 +139,22 @@ const getCompletedBuilds = async builds => {
     }, []);
 }
 
-const run = async (specificProject) => {
+const waitForBuild = async (label, builds) => {
+    let errors = 0;
+    while (builds.length > 0) {
+        console.log(`Waiting for ${label} tasks to complete...`);
+        await sleep(60000);
+        const completedBuilds = await getCompletedBuilds(builds);
+        if (Array.isArray(completedBuilds)) {
+            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
+        } else {
+            console.error(`${++errors}/3: Failed to check status of ${label} tasks`);
+            if (errors >= 3) process.exit(1);
+        }
+    }
+};
+
+const generateSBOMs = async (specificProject) => {
     console.log('SBOM Started ...');
 
     const projects = [];
@@ -188,7 +203,7 @@ const run = async (specificProject) => {
 
     let cnt = 0;
     for (const project of projects) {
-        const buildId = await buildSBOM(project);
+        const buildId = await triggerSBOMGeneration(project);
         if (buildId) {
             builds.push(buildId);
             console.log(`Started (${builds.length}: ${++cnt}/${projects.length}) ${buildId}`);
@@ -208,86 +223,29 @@ const run = async (specificProject) => {
         }
     }
 
-    errors = 0;
-    while (builds.length > 0) {
-        console.log('Waiting for SBOM tasks to complete...');
-        await sleep(60000);
-        const completedBuilds = await getCompletedBuilds(builds);
-        if (Array.isArray(completedBuilds)) {
-            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
-        } else {
-            console.error(`${++errors}/3: Failed to check task status`);
-            if (errors >= 3) process.exit(1);
-        }
-    }
+    await waitForBuild('SBOM', builds);
     console.log('SBOM Done.');
+};
+
+const run = async (specificProject) => {
+    await generateSBOMs(specificProject);
 
     console.log('ADVS Started ...');
-    const buildIdADVS = await buildADVS();
-    if (buildIdADVS) {
-        builds.push(buildIdADVS);
-    }
-
-    errors = 0;
-    while (builds.length > 0) {
-        console.log('Waiting for ADVS tasks to complete...');
-        await sleep(60000);
-        const completedBuilds = await getCompletedBuilds(builds);
-        if (Array.isArray(completedBuilds)) {
-            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
-        } else {
-            console.error(`${++errors}/3: Failed to check task status`);
-            if (errors >= 3) process.exit(1);
-        }
-    }
+    await waitForBuild('ADVS', [await triggerAdvisoriesTask()]);
     console.log('ADVS Done.');
 
     console.log('VULS Started ...');
-    const buildIdVULS = await buildVULS();
-    if (buildIdVULS) {
-        builds.push(buildIdVULS);
-    }
-
-    errors = 0;
-    while (builds.length > 0) {
-        console.log('Waiting for VULS tasks to complete...');
-        await sleep(60000);
-        const completedBuilds = await getCompletedBuilds(builds);
-        if (Array.isArray(completedBuilds)) {
-            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
-        } else {
-            console.error(`${++errors}/3: Failed to check task status`);
-            if (errors >= 3) process.exit(1);
-        }
-    }
+    await waitForBuild('VULS', [await triggerScan()]);
     console.log('VULS Done.');
 
     const date = new Date();
     if (0 && date.getDay() === 3) {
         console.log('SUMM Started ...');
-        const buildIdSUMM = await buildSUMM();
-        if (buildIdSUMM) {
-            builds.push(buildIdSUMM);
-        }
-
-        errors = 0;
-        while (builds.length > 0) {
-            console.log('Waiting for SUMM tasks to complete...');
-            await sleep(60000);
-            const completedBuilds = await getCompletedBuilds(builds);
-            if (Array.isArray(completedBuilds)) {
-                completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
-            } else {
-                console.error(`${++errors}/3: Failed to check task status`);
-                if (errors >= 3) process.exit(1);
-            }
-        }
+        await waitForBuild('SUMM', [await triggerWeeklySummary()]);
         console.log('SUMM Done.');
     }
 };
 
-
-//run().catch(console.error);
 const args = process.argv.slice(-1);
 
 if (args.length > 0) {

@@ -1,5 +1,5 @@
 /*.iml
 /.idea/
 /config/opensearch.*
-/config/email.*
+/config/notification.*
 /config/ci.*

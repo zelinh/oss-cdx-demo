@@ -23,11 +23,13 @@
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.1",
+    "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.8",
     "semver": "github:AMoo-Miki/node-semver#7c8973da05c34a31162e749b3bd73ac5c36d6054",
     "simple-git": "^3.13.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13"
+    "@types/fs-extra": "^9.0.13",
+    "@types/node-fetch": "^2.6.2"
   }
 }
