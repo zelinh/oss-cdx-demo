@@ -1,158 +1,10 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const config = require('../lib/config.js');
-const Git = require("../lib/git.js");
-const { sleep } = require("../lib/sleep.js");
-
+const config = require("../../lib/config");
+const { sleep } = require("../../lib/sleep");
+const Git = require("../../lib/git");
 const buildConfig = config.get('ci.codebuild');
 const PARALLEL_COUNT = buildConfig.parallelCount || 20;
-
-const triggerSBOMGeneration = async project => {
-    if (project.disabled) return;
-
-    try {
-        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
-            projectName: buildConfig.worker,
-            environmentVariablesOverride: [
-                {
-                    name: 'CDX_PROJECT',
-                    value: JSON.stringify([project]),
-                    type: "PLAINTEXT"
-                },
-                {
-                    name: 'CDX_JOB',
-                    value: "SBOM",
-                    type: "PLAINTEXT"
-                }
-            ],
-        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
-            maxBuffer: 10 * 1024 * 1024
-        });
-        if (stderr) {
-            console.error('Error on', project, 'with', stderr);
-        }
-        const { build } = JSON.parse(stdout.toString());
-        return build.id;
-    } catch (ex) {
-        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
-            console.log('Holding...');
-            await sleep(30000);
-            return triggerSBOMGeneration(project);
-        }
-        console.error('Exception on', project, 'with', ex);
-    }
-};
-
-const triggerAdvisoriesTask = async () => {
-    try {
-        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
-            projectName: buildConfig.worker,
-            environmentVariablesOverride: [
-                {
-                    name: 'CDX_JOB',
-                    value: "ADVS",
-                    type: "PLAINTEXT"
-                }
-            ],
-        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
-            maxBuffer: 10 * 1024 * 1024
-        });
-        if (stderr) {
-            console.error('Error on ADVS with', stderr);
-        }
-        const { build } = JSON.parse(stdout.toString());
-        return build.id;
-    } catch (ex) {
-        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
-            console.log('Holding...');
-            await sleep(30000);
-            return triggerAdvisoriesTask();
-        }
-        console.error('Exception on ADVS with', ex);
-    }
-};
-
-const triggerScan = async () => {
-    try {
-        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
-            projectName: buildConfig.worker,
-            environmentVariablesOverride: [
-                {
-                    name: 'CDX_JOB',
-                    value: "VULS",
-                    type: "PLAINTEXT"
-                }
-            ],
-        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
-            maxBuffer: 10 * 1024 * 1024
-        });
-        if (stderr) {
-            console.error('Error on VULS with', stderr);
-        }
-        const { build } = JSON.parse(stdout.toString());
-        return build.id;
-    } catch (ex) {
-        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
-            console.log('Holding...');
-            await sleep(30000);
-            return triggerAdvisoriesTask();
-        }
-        console.error('Exception on VULS with', ex);
-    }
-};
-
-const triggerWeeklySummary = async () => {
-    try {
-        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
-            projectName: buildConfig.worker,
-            environmentVariablesOverride: [
-                {
-                    name: 'CDX_JOB',
-                    value: "SUMM",
-                    type: "PLAINTEXT"
-                }
-            ],
-        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
-            maxBuffer: 10 * 1024 * 1024
-        });
-        if (stderr) {
-            console.error('Error on SUMM with', stderr);
-        }
-        const { build } = JSON.parse(stdout.toString());
-        return build.id;
-    } catch (ex) {
-        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
-            console.log('Holding...');
-            await sleep(30000);
-            return triggerAdvisoriesTask();
-        }
-        console.error('Exception on SUMM with', ex);
-    }
-};
-
-const getCompletedBuilds = async builds => {
-    const { stdout } = await exec(`aws codebuild batch-get-builds --ids ${builds.join(' ')}`);
-    return JSON.parse(stdout.toString()).builds.reduce((arr, build) => {
-        console.log(`${build.id}: ${build.currentPhase}`);
-        if (build.currentPhase === 'COMPLETED') arr.push(build.id);
-        return arr;
-    }, []);
-}
-
-const waitForBuild = async (label, builds) => {
-    let errors = 0;
-    while (builds.length > 0) {
-        console.log(`Waiting for ${label} tasks to complete...`);
-        await sleep(60000);
-        const completedBuilds = await getCompletedBuilds(builds);
-        if (Array.isArray(completedBuilds)) {
-            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
-        } else {
-            console.error(`${++errors}/3: Failed to check status of ${label} tasks`);
-            if (errors >= 3) process.exit(1);
-        }
-    }
-};
 
 const generateSBOMs = async (specificProject) => {
     console.log('SBOM Started ...');
@@ -224,43 +76,172 @@ const generateSBOMs = async (specificProject) => {
     }
 
     await waitForBuild('SBOM', builds);
-    console.log('SBOM Done.');
 };
 
-const run = async (specificProject) => {
-    await generateSBOMs(specificProject);
+const triggerSBOMGeneration = async project => {
+    if (project.disabled) return;
 
-    console.log('ADVS Started ...');
-    await waitForBuild('ADVS', [await triggerAdvisoriesTask()]);
-    console.log('ADVS Done.');
-
-    console.log('VULS Started ...');
-    await waitForBuild('VULS', [await triggerScan()]);
-    console.log('VULS Done.');
-
-    const date = new Date();
-    if (0 && date.getDay() === 3) {
-        console.log('SUMM Started ...');
-        await waitForBuild('SUMM', [await triggerWeeklySummary()]);
-        console.log('SUMM Done.');
+    try {
+        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
+            projectName: buildConfig.worker,
+            environmentVariablesOverride: [
+                {
+                    name: 'CDX_PROJECT',
+                    value: JSON.stringify([project]),
+                    type: "PLAINTEXT"
+                },
+                {
+                    name: 'CDX_JOB',
+                    value: "SBOM",
+                    type: "PLAINTEXT"
+                }
+            ],
+        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
+            maxBuffer: 10 * 1024 * 1024
+        });
+        if (stderr) {
+            console.error('Error on', project, 'with', stderr);
+        }
+        const { build } = JSON.parse(stdout.toString());
+        return build.id;
+    } catch (ex) {
+        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
+            console.log('Holding...');
+            await sleep(30000);
+            return triggerSBOMGeneration(project);
+        }
+        console.error('Exception on', project, 'with', ex);
     }
 };
 
-const args = process.argv.slice(-1);
+const triggerAdvisoriesTask = async () => {
+    console.log('ADVS Starting ...');
+    try {
+        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
+            projectName: buildConfig.worker,
+            environmentVariablesOverride: [
+                {
+                    name: 'CDX_JOB',
+                    value: "ADVS",
+                    type: "PLAINTEXT"
+                }
+            ],
+        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
+            maxBuffer: 10 * 1024 * 1024
+        });
+        if (stderr) {
+            console.error('Error on ADVS with', stderr);
+        }
+        const { build } = JSON.parse(stdout.toString());
+        return build.id;
+    } catch (ex) {
+        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
+            console.log('Holding...');
+            await sleep(30000);
+            return triggerAdvisoriesTask();
+        }
+        console.error('Exception on ADVS with', ex);
+    }
+};
 
-if (args.length > 0) {
-    let project_;
-    for (const project of config.get('projects')) {
-        if (project.name === args[0]) {
-            project_ = project;
-            break;
+const triggerScan = async () => {
+    console.log('VULS Starting ...');
+    try {
+        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
+            projectName: buildConfig.worker,
+            environmentVariablesOverride: [
+                {
+                    name: 'CDX_JOB',
+                    value: "VULS",
+                    type: "PLAINTEXT"
+                }
+            ],
+        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
+            maxBuffer: 10 * 1024 * 1024
+        });
+        if (stderr) {
+            console.error('Error on VULS with', stderr);
+        }
+        const { build } = JSON.parse(stdout.toString());
+        return build.id;
+    } catch (ex) {
+        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
+            console.log('Holding...');
+            await sleep(30000);
+            return triggerAdvisoriesTask();
+        }
+        console.error('Exception on VULS with', ex);
+    }
+};
+
+const triggerWeeklySummary = async () => {
+    const date = new Date();
+    if (date.getDay() !== 3) {
+        console.log('SUMM skipped');
+        return 'SKIP';
+    }
+
+    console.log('SUMM Starting ...');
+    try {
+        const { stdout, stderr } = await exec(`echo '${JSON.stringify({
+            projectName: buildConfig.worker,
+            environmentVariablesOverride: [
+                {
+                    name: 'CDX_JOB',
+                    value: "SUMM",
+                    type: "PLAINTEXT"
+                }
+            ],
+        }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
+            maxBuffer: 10 * 1024 * 1024
+        });
+        if (stderr) {
+            console.error('Error on SUMM with', stderr);
+        }
+        const { build } = JSON.parse(stdout.toString());
+        return build.id;
+    } catch (ex) {
+        if (ex.toString().indexOf('AccountLimitExceededException') !== -1) {
+            console.log('Holding...');
+            await sleep(30000);
+            return triggerAdvisoriesTask();
+        }
+        console.error('Exception on SUMM with', ex);
+    }
+};
+
+const getCompletedBuilds = async builds => {
+    const { stdout } = await exec(`aws codebuild batch-get-builds --ids ${builds.join(' ')}`);
+    return JSON.parse(stdout.toString()).builds.reduce((arr, build) => {
+        console.log(`${build.id}: ${build.currentPhase}`);
+        if (build.currentPhase === 'COMPLETED') arr.push(build.id);
+        return arr;
+    }, []);
+}
+
+const waitForBuild = async (label, builds) => {
+    let errors = 0;
+    while (builds.length > 0) {
+        if (builds.length === 1 && builds[0] === 'SKIP') break;
+
+        console.log(`Waiting for ${label} tasks to complete...`);
+        await sleep(60000);
+        const completedBuilds = await getCompletedBuilds(builds);
+        if (Array.isArray(completedBuilds)) {
+            completedBuilds.forEach(buildId => builds.splice(builds.indexOf(buildId), 1));
+        } else {
+            console.error(`${++errors}/3: Failed to check status of ${label} tasks`);
+            if (errors >= 3) process.exit(1);
         }
     }
+    console.log(`${label} Done.`);
+};
 
-    if (project_) {
-        console.log(`Running for ${project_.name}...`);
-        run(project_.name).catch(console.error);
-    } else {
-        run().catch(console.error);
-    }
+module.exports = {
+    run: {
+        sboms: async (specificProject) => generateSBOMs(specificProject),
+        advisories: async () => waitForBuild('ADVS', [await triggerAdvisoriesTask()]),
+        scan: async () => waitForBuild('VULS', [await triggerScan()]),
+        weeklySummary: async () => waitForBuild('SUMM', [await triggerWeeklySummary()])
+    },
 }
