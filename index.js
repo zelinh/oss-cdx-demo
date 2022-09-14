@@ -18,7 +18,7 @@ const run = async () => {
         await Vulnerabilities.run();
     }
     if (args.includes('--email') || args.includes('--summ')) {
-        await Summary.email();
+        await Summary.sendWeeklySummary();
     }
 };
 
