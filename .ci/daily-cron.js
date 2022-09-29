@@ -1,6 +1,7 @@
 const config = require('../lib/config.js');
 const CodeBuild = require('./lib/codebuild');
 const { sendLatestNews } = require("../lib/summary");
+const { sleep } = require("../lib/sleep");
 
 
 const run = async (specificProject) => {
@@ -8,6 +9,9 @@ const run = async (specificProject) => {
     await CodeBuild.run.advisories();
     await CodeBuild.run.scan();
     await CodeBuild.run.weeklySummary();
+
+    console.log('Waiting a bit...');
+    await sleep(60000);
 
     await sendLatestNews();
 };
