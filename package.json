@@ -20,6 +20,7 @@
     "@AMoo-Miki/cdxgen": "github:AMoo-Miki/cdxgen#3db2ef89e06f1a973039c78c5dd3bc9ebddd47aa",
     "@opensearch-project/opensearch": "^2.0.0",
     "async": "^3.2.4",
+    "exceljs": "^4.3.0",
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.1",
