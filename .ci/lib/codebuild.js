@@ -4,7 +4,7 @@ const config = require("../../lib/config");
 const { sleep } = require("../../lib/sleep");
 const Git = require("../../lib/git");
 const buildConfig = config.get('ci.codebuild');
-const PARALLEL_COUNT = buildConfig.parallelCount || 20;
+const PARALLEL_COUNT = buildConfig.parallelCount || 50;
 
 const generateSBOMs = async (specificProject) => {
     console.log('SBOM Started ...');
