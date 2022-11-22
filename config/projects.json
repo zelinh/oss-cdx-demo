@@ -553,5 +553,10 @@
       "v1.13.0.0"
     ],
     "disabled": false
+  },
+  {
+    "name": "Search Relevance: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-search-relevance.git",
+    "disabled": false
   }
 ]
