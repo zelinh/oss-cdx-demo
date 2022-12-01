@@ -560,8 +560,28 @@
     "disabled": false
   },
   {
+    "name": "Neural Search: OpenSearch Plugin",
+    "repo": "https://github.com/opensearch-project/neural-search.git",
+    "disabled": false
+  },
+  {
+    "name": "Security Analytics: OpenSearch Plugin",
+    "repo": "https://github.com/opensearch-project/security-analytics.git",
+    "disabled": false
+  },
+  {
+    "name": "Security Analytics: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/security-analytics.git",
+    "disabled": false
+  },
+  {
     "name": "Search Relevance: OpenSearch Dashboards Plugin",
     "repo": "https://github.com/opensearch-project/dashboards-search-relevance.git",
+    "disabled": false
+  },
+  {
+    "name": "OpenSearch Migrations",
+    "repo": "https://github.com/opensearch-project/opensearch-migrations.git",
     "disabled": false
   }
 ]
