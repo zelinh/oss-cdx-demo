@@ -400,12 +400,12 @@
     "name": "Ruby: OpenSearch Client",
     "repo": "https://github.com/opensearch-project/opensearch-ruby.git",
     "install": [
-      "[ -d \"opensearch\" ] && cd opensearch && gem build opensearch.gemspec && find . -name opensearch-ruby-*.gem -exec gem install --user-install {} +",
-      "[ -d \"opensearch-api\" ] && cd opensearch-api && gem build opensearch-api.gemspec && find . -name opensearch-api-*.gem -exec gem install --user-install {} +",
-      "[ -d \"opensearch-aws-sigv4\" ] && cd opensearch-aws-sigv4 && gem build opensearch-aws-sigv4.gemspec && find . -name opensearch-aws-sigv4-*.gem -exec gem install --user-install {} +",
-      "[ -d \"opensearch-dsl\" ] && cd opensearch-dsl && gem build opensearch-dsl.gemspec && find . -name opensearch-dsl-*.gem -exec gem install --user-install {} +",
-      "[ -d \"opensearch-transport\" ] && cd opensearch-transport && gem build opensearch-transport.gemspec && find . -name opensearch-transport-*.gem -exec gem install --user-install {} +",
-      "[ -d \"opensearch-ruby\" ] && cd opensearch-ruby && gem build opensearch-ruby.gemspec && find . -name opensearch-ruby-*.gem -exec gem install --user-install {} +"
+      "if [ -d \\\"opensearch\\\" ]; then cd opensearch && gem build opensearch.gemspec && find . -name opensearch-ruby-*.gem -exec gem install --user-install {} +; fi",
+      "if [ -d \\\"opensearch-api\\\" ]; then cd opensearch-api && gem build opensearch-api.gemspec && find . -name opensearch-api-*.gem -exec gem install --user-install {} +; fi",
+      "if [ -d \\\"opensearch-aws-sigv4\\\" ]; then cd opensearch-aws-sigv4 && gem build opensearch-aws-sigv4.gemspec && find . -name opensearch-aws-sigv4-*.gem -exec gem install --user-install {} +; fi",
+      "if [ -d \\\"opensearch-dsl\\\" ]; then cd opensearch-dsl && gem build opensearch-dsl.gemspec && find . -name opensearch-dsl-*.gem -exec gem install --user-install {} +; fi",
+      "if [ -d \\\"opensearch-transport\\\" ]; then cd opensearch-transport && gem build opensearch-transport.gemspec && find . -name opensearch-transport-*.gem -exec gem install --user-install {} +; fi",
+      "if [ -d \\\"opensearch-ruby\\\" ]; then cd opensearch-ruby && gem build opensearch-ruby.gemspec && find . -name opensearch-ruby-*.gem -exec gem install --user-install {} +; fi"
     ],
     "disabled": false
   },
