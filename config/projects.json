@@ -580,6 +580,26 @@
     "disabled": false
   },
   {
+    "name": "SQL JDBC: OpenSearch Client",
+    "repo": "https://github.com/opensearch-project/sql-jdbc.git",
+    "disabled": false
+  },
+  {
+    "name": "SQL ODBC: OpenSearch Client",
+    "repo": "https://github.com/opensearch-project/sql-odbc.git",
+    "disabled": false
+  },
+  {
+    "name": "SQL Cli: OpenSearch Client",
+    "repo": "https://github.com/opensearch-project/sql-cli.git",
+    "disabled": false
+  },
+  {
+    "name": "Dashboards Query Workbench: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-query-workbench.git",
+    "disabled": false
+  },
+  {
     "name": "OpenSearch Migrations",
     "repo": "https://github.com/opensearch-project/opensearch-migrations.git",
     "disabled": false
