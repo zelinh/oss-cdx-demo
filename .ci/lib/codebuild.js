@@ -2,6 +2,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const config = require("../../lib/config");
 const { sleep } = require("../../lib/sleep");
+const { normalize } = require("../../lib/normalizer");
 const Git = require("../../lib/git");
 const buildConfig = config.get('ci.codebuild');
 const PARALLEL_COUNT = buildConfig.parallelCount || 50;
@@ -94,8 +95,18 @@ const triggerSBOMGeneration = async project => {
                     name: 'CDX_JOB',
                     value: "SBOM",
                     type: "PLAINTEXT"
-                }
+                },
             ],
+            logsConfigOverride: {
+                cloudWatchLogs: {
+                    status: 'ENABLED',
+                    groupName: 'advisories',
+                    streamName: 'sbom/' + normalize.name(project.name) + (project.tag ? '/' + project.tag : ''),
+                },
+                s3Logs: {
+                    status: 'DISABLED',
+                }
+            },
         }).replace(/'/g, "\'")}' | xargs -0 aws codebuild start-build --cli-input-json`, {
             maxBuffer: 10 * 1024 * 1024
         });

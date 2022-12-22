@@ -27,7 +27,7 @@
     "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.8",
     "semver": "github:AMoo-Miki/node-semver#7c8973da05c34a31162e749b3bd73ac5c36d6054",
-    "simple-git": "^3.13.0"
+    "simple-git": "^3.15.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
