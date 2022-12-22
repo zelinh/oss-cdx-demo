@@ -661,5 +661,10 @@
     "name": "OpenSearch Migrations",
     "repo": "https://github.com/opensearch-project/opensearch-migrations.git",
     "disabled": false
+  },
+  {
+    "name": "Dashboards Observability: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-observability.git",
+    "disabled": false
   }
 ]
