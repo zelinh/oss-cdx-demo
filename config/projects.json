@@ -980,5 +980,10 @@
     ],
     "parallel": false,
     "disabled": true
+  },
+  {
+    "name": "Dashboards Reporting: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-reporting",
+    "disabled": true
   }
 ]
