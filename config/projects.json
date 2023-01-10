@@ -8,8 +8,7 @@
       "1.0.0-beta1",
       "1.0.0-rc1"
     ],
-    "parallel": false,
-    "disabled": false
+    "parallel": false
   },
   {
     "name": "OpenSearch",
@@ -20,8 +19,7 @@
       "1.0.0-beta1",
       "1.0.0-rc1"
     ],
-    "parallel": false,
-    "disabled": false
+    "parallel": false
   },
   {
     "name": "Security: OpenSearch Plugin",
@@ -83,8 +81,7 @@
       "v1.13.0.0",
       "v1.13.1.0",
       "v1.13.1.1"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Security: OpenSearch Dashboards Plugin",
@@ -141,26 +138,22 @@
       "v1.12.0.0",
       "v1.13.0.0",
       "v1.13.0.1"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Cross Cluster Replication: OpenSearch Plugin",
     "repo": "https://github.com/opensearch-project/cross-cluster-replication.git",
     "ignored-tags": [
       "v1.13.0.0-experimental"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Python: OpenSearch DSL Client",
-    "repo": "https://github.com/opensearch-project/opensearch-dsl-py.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-dsl-py.git"
   },
   {
     "name": "Java: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/opensearch-java.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-java.git"
   },
   {
     "name": "Java: OpenSearch Common Utils",
@@ -175,13 +168,11 @@
       "v1.12.0.1",
       "v1.12.0.2",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "OUI: OpenSearch Design System",
-    "repo": "https://github.com/opensearch-project/oui.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/oui.git"
   },
   {
     "name": "Performance Analyzer RCA",
@@ -191,8 +182,7 @@
       "v1.10.1.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Data Prepper",
@@ -200,8 +190,7 @@
     "ignored-tags": [
       "v1.0.0",
       "v1.1.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Performance Analyzer",
@@ -223,8 +212,7 @@
       "v1.11.0.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Anomaly Detection: OpenSearch Plugin",
@@ -240,8 +228,7 @@
       "v1.11.0.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Asynchronous Search: OpenSearch Plugin",
@@ -251,8 +238,7 @@
       "v1.13.0.0",
       "v1.13.0.1",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Index Management: OpenSearch Plugin",
@@ -280,8 +266,7 @@
       "v1.13.0.0",
       "v1.13.1.0",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Rust: OpenSearch Client",
@@ -295,8 +280,7 @@
     ],
     "ignored-tags": [
       "origin/7.10"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "CLI: OpenSearch Client",
@@ -305,16 +289,14 @@
       "(None)",
       "v1.0.0",
       "v1.1.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Go: OpenSearch Client",
     "repo": "https://github.com/opensearch-project/opensearch-go.git",
     "ignored-tags": [
       "1.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Alerting: OpenSearch Plugin",
@@ -352,18 +334,15 @@
       "v1.12.0.2",
       "v1.13.0.0",
       "v1.13.1.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "JavaScript: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/opensearch-js.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-js.git"
   },
   {
     "name": ".Net: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/opensearch-net.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-net.git"
   },
   {
     "name": "Job Scheduler: OpenSearch Plugin",
@@ -387,8 +366,7 @@
       "v1.11.0.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "k-NN: OpenSearch Plugin",
@@ -410,13 +388,11 @@
       "v1.11.0.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Machine Learning Commons",
-    "repo": "https://github.com/opensearch-project/ml-commons.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/ml-commons.git"
   },
   {
     "name": "SQL: OpenSearch Plugin",
@@ -446,13 +422,11 @@
       "v1.12.0.0",
       "v1.13.0.0",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Python: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/opensearch-py.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-py.git"
   },
   {
     "name": "Ruby: OpenSearch Client",
@@ -464,18 +438,15 @@
       "if [ -d \\\"opensearch-dsl\\\" ]; then cd opensearch-dsl && gem build opensearch-dsl.gemspec && find . -name opensearch-dsl-*.gem -exec gem install --user-install {} +; fi",
       "if [ -d \\\"opensearch-transport\\\" ]; then cd opensearch-transport && gem build opensearch-transport.gemspec && find . -name opensearch-transport-*.gem -exec gem install --user-install {} +; fi",
       "if [ -d \\\"opensearch-ruby\\\" ]; then cd opensearch-ruby && gem build opensearch-ruby.gemspec && find . -name opensearch-ruby-*.gem -exec gem install --user-install {} +; fi"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "PHP: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/opensearch-php.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-php.git"
   },
   {
     "name": "Desktop: OpenSearch Dashboards Client",
-    "repo": "https://github.com/opensearch-project/dashboards-desktop.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/dashboards-desktop.git"
   },
   {
     "name": "Reports & Scheduler: OpenSearch Dashboards Plugin",
@@ -490,8 +461,7 @@
       "v1.12.0.0",
       "v1.13.0.0",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Observability: OpenSearch Dashboards Plugin",
@@ -505,8 +475,7 @@
       "1.1.0.0",
       "v1.12.0.0",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Notifications: OpenSearch Dashboards Plugin",
@@ -514,8 +483,7 @@
     "roots": [
       "notifications",
       "dashboards-notifications"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Geospatial: OpenSearch Plugin",
@@ -526,18 +494,15 @@
       "v1.12.0.0",
       "v1.13.0.0",
       "v1.13.2.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Benchmark",
-    "repo": "https://github.com/opensearch-project/opensearch-benchmark.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-benchmark.git"
   },
   {
     "name": "OCI Object Storage: OpenSearch Plugin",
-    "repo": "https://github.com/opensearch-project/opensearch-oci-object-storage.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-oci-object-storage.git"
   },
   {
     "name": "Alerting: OpenSearch Dashboards Plugin",
@@ -567,8 +532,7 @@
       "v1.12.0.1",
       "v1.12.0.2",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Anomaly Detection: OpenSearch Dashboards Plugin",
@@ -582,8 +546,7 @@
       "v1.11.0.0",
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Index Management: OpenSearch Dashboards Plugin",
@@ -605,8 +568,7 @@
       "v1.12.0.0",
       "v1.13.0.0",
       "v1.13.0.1"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Visualizations: OpenSearch Dashboards Plugin",
@@ -614,57 +576,54 @@
     "ignored-tags": [
       "v1.12.0.0",
       "v1.13.0.0"
-    ],
-    "disabled": false
+    ]
   },
   {
     "name": "Neural Search: OpenSearch Plugin",
-    "repo": "https://github.com/opensearch-project/neural-search.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/neural-search.git"
   },
   {
     "name": "Security Analytics: OpenSearch Plugin",
-    "repo": "https://github.com/opensearch-project/security-analytics.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/security-analytics.git"
   },
   {
     "name": "Security Analytics: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/security-analytics.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/security-analytics.git"
   },
   {
     "name": "Search Relevance: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/dashboards-search-relevance.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/dashboards-search-relevance.git"
   },
   {
     "name": "SQL JDBC: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/sql-jdbc.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/sql-jdbc.git"
   },
   {
     "name": "SQL ODBC: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/sql-odbc.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/sql-odbc.git"
   },
   {
     "name": "SQL Cli: OpenSearch Client",
-    "repo": "https://github.com/opensearch-project/sql-cli.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/sql-cli.git"
   },
   {
     "name": "Dashboards Query Workbench: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/dashboards-query-workbench.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/dashboards-query-workbench.git"
   },
   {
     "name": "OpenSearch Migrations",
-    "repo": "https://github.com/opensearch-project/opensearch-migrations.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/opensearch-migrations.git"
   },
   {
     "name": "Dashboards Observability: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/dashboards-observability.git",
-    "disabled": false
+    "repo": "https://github.com/opensearch-project/dashboards-observability.git"
+  },
+  {
+    "name": "Reports: OpenSearch Plugin",
+    "repo": "https://github.com/opensearch-project/reporting.git"
+  },
+  {
+    "name": "Reports: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-reporting/.git"
   }
 ]
