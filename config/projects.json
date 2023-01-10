@@ -478,12 +478,12 @@
     ]
   },
   {
+    "name": "Notifications: OpenSearch Plugin",
+    "repo": "https://github.com/opensearch-project/notifications.git"
+  },
+  {
     "name": "Notifications: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/notifications.git",
-    "roots": [
-      "notifications",
-      "dashboards-notifications"
-    ]
+    "repo": "https://github.com/opensearch-project/dashboards-notifications.git"
   },
   {
     "name": "Geospatial: OpenSearch Plugin",
