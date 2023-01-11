@@ -624,6 +624,6 @@
   },
   {
     "name": "Reports: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/dashboards-reporting/.git"
+    "repo": "https://github.com/opensearch-project/dashboards-reporting.git"
   }
 ]
