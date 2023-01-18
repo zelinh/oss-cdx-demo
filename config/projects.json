@@ -474,7 +474,20 @@
       "1.0.0.0",
       "1.1.0.0",
       "v1.12.0.0",
-      "v1.13.2.0"
+      "v1.13.2.0",
+      "origin/2.5",
+      "origin/2.x"
+    ]
+  },
+  {
+    "name": "Observability: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/observability.git",
+    "additional-branches": [
+      "origin/2.5",
+      "origin/2.x"
+    ],
+    "ignored-tags": [
+      "*"
     ]
   },
   {
