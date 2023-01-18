@@ -464,7 +464,7 @@
     ]
   },
   {
-    "name": "Observability: OpenSearch Dashboards Plugin",
+    "name": "Observability: OpenSearch Plugin",
     "repo": "https://github.com/opensearch-project/observability.git",
     "roots": [
       "opensearch-observability",
@@ -480,7 +480,7 @@
     ]
   },
   {
-    "name": "Observability: OpenSearch Dashboards Plugin",
+    "name": "Observability: OpenSearch Plugin",
     "repo": "https://github.com/opensearch-project/observability.git",
     "additional-branches": [
       "origin/2.5",
