@@ -638,5 +638,9 @@
   {
     "name": "Reports: OpenSearch Dashboards Plugin",
     "repo": "https://github.com/opensearch-project/dashboards-reporting.git"
+  },
+  {
+    "name": "Logstash: Logstash Input OpenSearch",
+    "repo": "https://github.com/opensearch-project/logstash-input-opensearch.git"
   }
 ]
