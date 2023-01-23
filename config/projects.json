@@ -642,5 +642,9 @@
   {
     "name": "Logstash: Logstash Input OpenSearch",
     "repo": "https://github.com/opensearch-project/logstash-input-opensearch.git"
+  },
+  {
+    "name": "Reporting CLI: Opensearch Reporting CLI",
+    "repo": "https://github.com/opensearch-project/reporting-cli.git"
   }
 ]
