@@ -644,7 +644,11 @@
     "repo": "https://github.com/opensearch-project/logstash-input-opensearch.git"
   },
   {
-    "name": "Reporting CLI: Opensearch Reporting CLI",
+    "name": "Reporting CLI: OpenSearch Reporting CLI",
     "repo": "https://github.com/opensearch-project/reporting-cli.git"
+  },
+  {
+    "name": "Dashboards SDK JS: OpenSearch Dashboards SDK JS",
+    "repo": "https://github.com/opensearch-project/opensearch-dashboards-sdk-js.git"
   }
 ]
