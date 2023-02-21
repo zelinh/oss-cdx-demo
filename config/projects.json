@@ -396,8 +396,7 @@
   },
   {
     "name": "Machine Learning Commons Dashboards: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/ml-commons-dashboards.git",
-    "disabled": true
+    "repo": "https://github.com/opensearch-project/ml-commons-dashboards.git"
   },
   {
     "name": "SQL: OpenSearch Plugin",
