@@ -654,5 +654,13 @@
   {
     "name": "Dashboards SDK JS: OpenSearch Dashboards SDK JS",
     "repo": "https://github.com/opensearch-project/opensearch-dashboards-sdk-js.git"
+  },
+  {
+    "name": "Maps: Maps Server for OpenSearch Dashboards Plugin dashboards-maps",
+    "repo": "https://github.com/opensearch-project/maps.git"
+  },
+  {
+    "name": "Python Client ML: OpenSearch Python Client ML",
+    "repo": "https://github.com/opensearch-project/opensearch-py-ml.git"
   }
 ]
