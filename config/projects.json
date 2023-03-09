@@ -656,7 +656,7 @@
     "repo": "https://github.com/opensearch-project/opensearch-dashboards-sdk-js.git"
   },
   {
-    "name": "Maps: OpenSearch Dashboards Plugin",
+    "name": "Maps: Maps Server for OpenSearch Dashboards Plugin dashboards-maps",
     "repo": "https://github.com/opensearch-project/maps.git"
   },
   {
