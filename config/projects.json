@@ -454,7 +454,7 @@
   },
   {
     "name": "Reports & Scheduler: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/dashboards-reports.git",
+    "repo": "https://github.com/opensearch-project/reporting.git",
     "roots": [
       "reports-scheduler",
       "dashboards-reports"
@@ -474,24 +474,80 @@
       "opensearch-observability",
       "dashboards-observability"
     ],
-    "ignored-tags": [
+    "additional-branches": [
       "1.0.0.0",
       "1.1.0.0",
-      "v1.12.0.0",
-      "v1.13.2.0",
-      "origin/2.5",
-      "origin/2.x"
+      "1.2.0.0",
+      "1.2.1.0",
+      "1.2.2.0",
+      "1.2.3.0",
+      "1.2.4.0",
+      "1.3.0.0",
+      "1.3.1.0",
+      "1.3.2.0",
+      "1.3.3.0",
+      "1.3.4.0",
+      "1.3.5.0",
+      "1.3.6.0",
+      "1.3.7.0",
+      "2.0.0.0",
+      "2.0.1.0",
+      "2.2.0.0",
+      "2.2.1.0",
+      "2.3.0.0",
+      "2.4.0.0",
+      "2.4.1.0",
+      "origin/1.0",
+      "origin/1.1",
+      "origin/1.2",
+      "origin/2.0",
+      "origin/2.1",
+      "origin/2.2",
+      "origin/2.3",
+      "origin/2.4"
+    ],
+    "ignored-tags": [
+      "*"
     ]
   },
   {
     "name": "Observability: OpenSearch Plugin",
     "repo": "https://github.com/opensearch-project/observability.git",
-    "additional-branches": [
-      "origin/2.5",
-      "origin/2.x"
-    ],
     "ignored-tags": [
-      "*"
+      "1.0.0.0",
+      "1.1.0.0",
+      "v1.12.0.0",
+      "v1.13.2.0",
+      "1.0.0.0",
+      "1.1.0.0",
+      "1.2.0.0",
+      "1.2.1.0",
+      "1.2.2.0",
+      "1.2.3.0",
+      "1.2.4.0",
+      "1.3.0.0",
+      "1.3.1.0",
+      "1.3.2.0",
+      "1.3.3.0",
+      "1.3.4.0",
+      "1.3.5.0",
+      "1.3.6.0",
+      "1.3.7.0",
+      "2.0.0.0",
+      "2.0.1.0",
+      "2.2.0.0",
+      "2.2.1.0",
+      "2.3.0.0",
+      "2.4.0.0",
+      "2.4.1.0",
+      "origin/1.0",
+      "origin/1.1",
+      "origin/1.2",
+      "origin/2.0",
+      "origin/2.1",
+      "origin/2.2",
+      "origin/2.3",
+      "origin/2.4"
     ]
   },
   {
@@ -512,6 +568,10 @@
       "v1.13.0.0",
       "v1.13.2.0"
     ]
+  },
+  {
+    "name": "Dashboards-Maps: OpenSearch Dashboards Plugin",
+    "repo": "https://github.com/opensearch-project/dashboards-maps.git"
   },
   {
     "name": "Benchmark",
@@ -605,7 +665,7 @@
   },
   {
     "name": "Security Analytics: OpenSearch Dashboards Plugin",
-    "repo": "https://github.com/opensearch-project/security-analytics.git"
+    "repo": "https://github.com/opensearch-project/security-analytics-dashboards-plugin.git"
   },
   {
     "name": "Search Relevance: OpenSearch Dashboards Plugin",
@@ -636,10 +696,6 @@
     "repo": "https://github.com/opensearch-project/dashboards-observability.git"
   },
   {
-    "name": "Reports: OpenSearch Plugin",
-    "repo": "https://github.com/opensearch-project/reporting.git"
-  },
-  {
     "name": "Reports: OpenSearch Dashboards Plugin",
     "repo": "https://github.com/opensearch-project/dashboards-reporting.git"
   },
@@ -662,5 +718,9 @@
   {
     "name": "Python Client ML: OpenSearch Python Client ML",
     "repo": "https://github.com/opensearch-project/opensearch-py-ml.git"
+  },
+  {
+    "name": "OpenSearch Dashboards Functional Test: Integration Tests for OpenSearch Dashboards Plugins",
+    "repo": "https://github.com/opensearch-project/opensearch-dashboards-functional-test.git"
   }
 ]
