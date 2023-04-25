@@ -791,5 +791,9 @@
   {
     "name": "OpenSearch Dashboards Functional Test: Integration Tests for OpenSearch Dashboards Plugins",
     "repo": "https://github.com/opensearch-project/opensearch-dashboards-functional-test.git"
+  },
+  {
+    "name": "OpenSearch Performance Analyzer Commons",
+    "repo": "https://github.com/opensearch-project/performance-analyzer-commons.git"
   }
 ]
