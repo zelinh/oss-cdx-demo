@@ -795,5 +795,13 @@
   {
     "name": "OpenSearch Performance Analyzer Commons",
     "repo": "https://github.com/opensearch-project/performance-analyzer-commons.git"
+  },
+  {
+    "name": "OpenSearch Traffic Replayer",
+    "repo": "https://github.com/opensearch-project/traffic-replayer.git"
+  },
+  {
+    "name": "Opensearch Traffic Comparator",
+    "repo": "https://github.com/opensearch-project/traffic-comparator.git"
   }
 ]
