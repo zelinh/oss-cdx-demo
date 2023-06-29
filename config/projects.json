@@ -801,6 +801,14 @@
     "repo": "https://github.com/opensearch-project/traffic-replayer.git"
   },
   {
+    "name": "Data Prepper Documentation",
+    "repo": "https://github.com/opensearch-project/data-prepper-documentation-website.git"
+  },
+  {
+    "name": "OpenSearch Telemetry Collector",
+    "repo": "https://github.com/opensearch-project/telemetry-collector.git"
+  },
+  {
     "name": "Opensearch Traffic Comparator",
     "repo": "https://github.com/opensearch-project/traffic-comparator.git"
   }
